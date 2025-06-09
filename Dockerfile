@@ -1,11 +1,13 @@
 FROM node:23.11.0-alpine
 
 WORKDIR /app
-
-COPY . .
+COPY package*.json /app
 
 RUN npm install
 
-EXPOSE 3000
+COPY . /app
+
+ARG PORT
+EXPOSE $PORT
 
 CMD ["npm", "start"]

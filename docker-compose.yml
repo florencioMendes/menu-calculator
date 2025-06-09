@@ -1,32 +1,38 @@
 name: "menu-calculator"
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PORT: ${APP_PORT:-3000}
     environment:
-      - ADDRESS=0.0.0.0
-      - PORT=3000
+      - ADDRESS=${APP_ADDRESS}
+      - PORT=${APP_PORT}
     volumes:
       - .:/app
+      - /app/node_modules
     ports: 
-      - 3000:3000
+      - ${APP_PORT:-3000}:${APP_PORT:-3000}
+    restart: always
     networks:
       - app-network
   postgres:
     image: postgres:15
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=${DB_MENU_USR}
+      - POSTGRES_PASSWORD=${DB_MENU_PASS}
     ports:
-      - 5432:5432
+      - ${DB_MENU_PORT:-5432}:5432
     networks:
       - app-network
   pgadmin:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: 'teste@teste.com'
-      PGADMIN_DEFAULT_PASSWORD: 'teste'
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
-      - 16543:80
+      - ${PGADMIN_PORT:-16543}:80
     networks:
       - app-network
 
