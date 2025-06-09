@@ -7,8 +7,8 @@ services:
       args:
         PORT: ${APP_PORT:-3000}
     environment:
-      - ADDRESS=${APP_ADDRESS}
-      - PORT=${APP_PORT}
+      - ADDRESS=${APP_ADDRESS:-0.0.0.0}
+      - PORT=${APP_PORT:-3000}
     volumes:
       - .:/app
       - /app/node_modules
@@ -17,11 +17,14 @@ services:
     restart: always
     networks:
       - app-network
+    depends_on:
+      - postgres
   postgres:
     image: postgres:15
     environment:
       - POSTGRES_USER=${DB_MENU_USR}
       - POSTGRES_PASSWORD=${DB_MENU_PASS}
+      - POSTGRES_DB=${DB_MENU_DB}
     ports:
       - ${DB_MENU_PORT:-5432}:5432
     networks:

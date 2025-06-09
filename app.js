@@ -7,6 +7,9 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const pgp = require('pg-promise')(/* options */)
+const db = pgp('postgres://postgres:password@postgres:5432/menu')
+
 var app = express();
 
 // view engine setup
@@ -37,5 +40,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+db.one('SELECT $1 AS value', 123)
+  .then((data) => {
+    console.log('DATA:', data.value)
+  })
+  .catch((error) => {
+    console.log('ERROR:', error)
+  })
 
 module.exports = app;
