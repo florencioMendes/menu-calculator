@@ -1,0 +1,35 @@
+name: "menu-calculator"
+services:
+  app:
+    build: .
+    environment:
+      - ADDRESS=0.0.0.0
+      - PORT=3000
+    volumes:
+      - .:/app
+    ports: 
+      - 3000:3000
+    networks:
+      - app-network
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 5432:5432
+    networks:
+      - app-network
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'teste@teste.com'
+      PGADMIN_DEFAULT_PASSWORD: 'teste'
+    ports:
+      - 16543:80
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
