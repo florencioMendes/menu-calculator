@@ -22,9 +22,9 @@ services:
   postgres:
     image: postgres:15
     environment:
-      - POSTGRES_USER=${DB_MENU_USR}
-      - POSTGRES_PASSWORD=${DB_MENU_PASS}
-      - POSTGRES_DB=${DB_MENU_DB}
+      POSTGRES_USER: ${DB_MENU_USR}
+      POSTGRES_PASSWORD: ${DB_MENU_PASS}
+      POSTGRES_DB: ${DB_MENU_DB}
     ports:
       - ${DB_MENU_PORT:-5432}:5432
     networks:
