@@ -4,6 +4,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - DB_MENU_HOST=${DB_MENU_HOST}
+      - DB_MENU_PORT=${DB_MENU_PORT}
+      - APP_ENV=${APP_ENV}
     volumes:
       - .:/app
       - /app/node_modules
