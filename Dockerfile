@@ -1,13 +1,12 @@
 FROM node:23.11.0-alpine
 
+RUN apk add --no-cache bash
+
 WORKDIR /app
-COPY package*.json /app
+COPY package*.json ./
 
 RUN npm install
 
-COPY . /app
-
-ARG PORT
-EXPOSE $PORT
+COPY . .
 
 CMD ["npm", "start"]
