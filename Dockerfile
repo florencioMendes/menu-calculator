@@ -9,6 +9,8 @@ RUN npm install
 
 COPY . .
 
+RUN npm install pm2 -g
+
 RUN chmod +x ./entrypoint.sh
 
 ENTRYPOINT [ "./entrypoint.sh" ]
