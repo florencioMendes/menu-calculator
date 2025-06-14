@@ -1,0 +1,2 @@
+docker exec menu-calculator-app-1 npm run lint:fix
+docker exec menu-calculator-app-1 npm run format
