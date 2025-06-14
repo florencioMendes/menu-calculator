@@ -1,4 +1,4 @@
 module.exports = {
     middleware: require('./middleware'),
-    db: require('./database')
-}
+    db: require('./database'),
+};
