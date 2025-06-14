@@ -2,7 +2,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const express = require('express');
 const helmet = require('helmet');
-const path = require('path')
 
 module.exports = function (app) {
     app.use(helmet());
