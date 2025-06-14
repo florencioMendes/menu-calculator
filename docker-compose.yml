@@ -4,6 +4,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - APP_USER=${APP_USER:-1002} 
+        - APP_GROUP=${APP_GROUP:-1002}
     environment:
       - DB_MENU_HOST=${DB_MENU_HOST}
       - DB_MENU_PORT=${DB_MENU_PORT}
