@@ -5,7 +5,7 @@
   "scripts": {
     "start": "pm2-runtime ecosystem.config.js",
     "dev": "pm2-dev ./bin/www",
-    "lint": "eslit .",
+    "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write ."
   },
