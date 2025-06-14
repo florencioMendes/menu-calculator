@@ -7,7 +7,8 @@
         "dev": "pm2-dev ./bin/www",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "prepare": "husky"
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",
@@ -25,6 +26,7 @@
         "@eslint/markdown": "^6.5.0",
         "eslint": "^9.29.0",
         "globals": "^16.2.0",
+        "husky": "^9.1.7",
         "prettier": "^3.5.3"
     }
 }
