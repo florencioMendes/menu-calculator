@@ -1,12 +1,13 @@
 const express = require('express');
 const createError = require('http-errors');
-const config = require('./config');
 const routes = require('./routes');
+const middlewares = require('./middlewares');
+require('./config');
 
 const app = express();
 
 routes(app);
-config.middleware(app);
+middlewares(app);
 
 app.use(function (req, res, next) {
     next(createError(404));
