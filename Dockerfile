@@ -1,7 +1,5 @@
 FROM node:23.11.0-alpine
 
-RUN apk add --no-cache bash
-
 ARG APP_USER
 ARG APP_GROUP
 
