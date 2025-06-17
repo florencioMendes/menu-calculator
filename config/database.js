@@ -16,10 +16,4 @@ const connection = {
     password: DB_MENU_PASS,
 };
 
-const db = pgp(connection);
-
-db.one('SELECT $1 AS value', 123).then((data) => {
-    console.log('forencio:', data.value);
-});
-
-exports.module = db;
+exports.module = pgp(connection);
